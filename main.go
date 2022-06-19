@@ -6,7 +6,7 @@ import (
   "os"
   "math"
   "strconv"
-	
+
   "net/http"
   "encoding/json"
   "io/ioutil"
@@ -39,7 +39,7 @@ func writeData (data string) {
 
   fwrite, _ := json.MarshalIndent(persons, "", " ")
   _ = ioutil.WriteFile(data, fwrite, 0644)
-	
+
 }
 
 func bmiCalculation (p *Person) {
@@ -57,7 +57,7 @@ func bmiCalculation (p *Person) {
       p.Label = "Obesity"
     default:
       p.Label = "Undefined"
-	}
+  }
 
 }
 
@@ -72,7 +72,7 @@ func homePage (c *gin.Context) {
   if p.Height == 0 || p.Weight == 0 {
     c.String(http.StatusOK, "Please insert Weight and Height Query! %s",
     os.ExpandEnv("\nExample: http://localhost:${PORT}/?height=167&weight=70"))
-    return 
+    return
   }
 
   bmiCalculation(p)
@@ -107,8 +107,8 @@ func postPerson (c *gin.Context) {
 }
 
 func main() {
-    
-  os.Setenv("PORT", "8000") 
+
+  os.Setenv("PORT", "8000")
 
   r := gin.Default()
 

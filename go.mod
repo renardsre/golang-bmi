@@ -1,4 +1,4 @@
-module api/golang
+module golang-bmi
 
 go 1.18
 
