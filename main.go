@@ -42,9 +42,14 @@ func writeData (data string) {
 
 }
 
-func bmiCalculation (p *Person) {
+func (p *Person) bmiCalculation() float64 {
 
   p.BMI = math.Round(p.Weight/(p.Height*p.Height)*100000)/10;
+  return p.BMI
+
+}
+
+func (p *Person) defineLabel() string {
 
   switch {
     case p.BMI < 18.5:
@@ -58,6 +63,8 @@ func bmiCalculation (p *Person) {
     default:
       p.Label = "Undefined"
   }
+
+  return p.Label
 
 }
 
@@ -75,7 +82,7 @@ func homePage (c *gin.Context) {
     return
   }
 
-  bmiCalculation(p)
+  p.bmiCalculation()
   c.String(http.StatusOK, "Your BMI is: %.1f \nYour Label is: %s", p.BMI, p.Label)
 
 }
@@ -97,7 +104,8 @@ func postPerson (c *gin.Context) {
   }
 
   readData(file)
-  bmiCalculation(p)
+  p.bmiCalculation()
+  p.defineLabel()
 
   persons = append(persons, newPerson)
 

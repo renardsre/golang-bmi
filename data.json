@@ -1,0 +1,16 @@
+[
+ {
+  "Name": "test",
+  "Height": 168,
+  "Weight": 75,
+  "BMI": 26.6,
+  "Label": "Overweight"
+ },
+ {
+  "Name": "test",
+  "Height": 168,
+  "Weight": 75,
+  "BMI": 26.6,
+  "Label": "Overweight"
+ }
+]
